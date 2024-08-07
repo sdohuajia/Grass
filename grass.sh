@@ -6,6 +6,7 @@ if [ "$(id -u)" != "0" ]; then
     echo "请尝试使用 'sudo -i' 命令切换到root用户，然后再次运行此脚本。"
     exit 1
 fi
+
 # 更新软件包索引
 update_packages() {
     echo "更新软件包索引..."
@@ -62,13 +63,13 @@ clone_repo() {
 }
 
 # 检查是否在正确的目录中
-if [ ! -d "grass-mining" ]; then
-    echo "仓库目录 'grass-mining' 不存在。请确保脚本在正确的目录中运行。"
+if [ ! -d "Grass" ]; then
+    echo "仓库目录 'Grass' 不存在。请确保仓库克隆成功。"
     exit 1
 fi
 
 # 进入仓库目录
-cd grass-mining
+cd Grass
 
 # 提示用户替换为 grass 用户的 ID
 echo "请确保 'data.txt' 文件中的用户 ID 替换为 'grass' 用户的 ID。"
@@ -113,8 +114,14 @@ check_docker_status() {
     docker logs "$container_id"
 }
 
+# 替换 data.txt 文件的内容
+replace_data_txt() {
+    echo "替换 data.txt 文件中的内容..."
+    # 在这里添加替换内容的逻辑
+}
+
 # 主菜单函数
-function main_menu() {
+main_menu() {
     while true; do
         clear
         echo "脚本由大赌社区哈哈哈哈编写，推特 @ferdie_jhovie，免费开源，请勿相信收费"
