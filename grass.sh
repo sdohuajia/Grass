@@ -62,29 +62,31 @@ clone_repo() {
     git clone https://github.com/sdohuajia/Grass
 }
 
-# 检查是否在正确的目录中
-if [ ! -d "Grass" ]; then
-    echo "仓库目录 'Grass' 不存在。请确保仓库克隆成功。"
-    exit 1
-fi
+# 进入仓库目录并编辑 data.txt 文件
+edit_data_txt() {
+    if [ -d "Grass" ]; then
+        echo "进入 'Grass' 目录..."
+        cd Grass
 
-# 进入仓库目录
-cd Grass
+        # 提示用户替换为 grass 用户的 ID
+        echo "请确保 'data.txt' 文件中的用户 ID 替换为 'grass' 用户的 ID。"
+        echo "在编辑完成并保存后，按任意键继续。"
 
-# 提示用户替换为 grass 用户的 ID
-echo "请确保 'data.txt' 文件中的用户 ID 替换为 'grass' 用户的 ID。"
-echo "在编辑完成并保存后，按任意键继续。"
+        # 编辑 data.txt 文件
+        nano data.txt
 
-# 编辑 data.txt 文件
-nano data.txt
-
-# 检查用户是否退出编辑器
-if [ $? -eq 0 ]; then
-    echo "文件编辑完成，继续执行下一步。"
-else
-    echo "编辑失败或用户未保存，脚本将退出。"
-    exit 1
-fi
+        # 检查用户是否退出编辑器
+        if [ $? -eq 0 ]; then
+            echo "文件编辑完成，继续执行下一步。"
+        else
+            echo "编辑失败或用户未保存，脚本将退出。"
+            exit 1
+        fi
+    else
+        echo "仓库目录 'Grass' 不存在。"
+        exit 1
+    fi
+}
 
 # 构建 Docker 镜像
 build_docker_image() {
@@ -114,12 +116,6 @@ check_docker_status() {
     docker logs "$container_id"
 }
 
-# 替换 data.txt 文件的内容
-replace_data_txt() {
-    echo "替换 data.txt 文件中的内容..."
-    # 在这里添加替换内容的逻辑
-}
-
 # 主菜单函数
 main_menu() {
     while true; do
@@ -142,7 +138,7 @@ main_menu() {
                 update_packages
                 install_dependencies
                 clone_repo
-                replace_data_txt
+                edit_data_txt
                 build_docker_image
                 run_docker_container
                 ;;
