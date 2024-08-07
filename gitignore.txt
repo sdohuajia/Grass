@@ -1,3 +1,0 @@
-*.deb
-*.crt
-.grass-install/
