@@ -1,0 +1,224 @@
+{
+    "install": {
+        "GrassDesktopNode": {
+            "actions": [
+                {
+                    "name": "download",
+                    "args": {
+                        "type": "gdrive",
+                        "filename": "grass_4.26.5_amd64.deb",
+                        "file_id": "1oPtoxDHpZJtd-wR7FYfhLnhWu6te4KVo"
+                    }
+                },
+                {
+                    "name": "check",
+                    "args": {
+                        "type": "md5",
+                        "filename": "grass_4.26.5_amd64.deb",
+                        "value": "fe91ca76e248cf289f037e1e37944a12"
+                    }
+                },
+                {
+                    "name": "check",
+                    "args": {
+                        "type": "sha256",
+                        "filename": "grass_4.26.5_amd64.deb",
+                        "value": "7d07dab96937fc04338fdbc6ff93779d34250d5be84994b2eb034cec444797a6"
+                    }
+                },
+                {
+                    "name": "check",
+                    "args": {
+                        "type": "crc32",
+                        "filename": "grass_4.26.5_amd64.deb",
+                        "value": "c7142e62"
+                    }
+                },
+                {
+                    "name": "extract_deb",
+                    "args": {
+                        "filename": "grass_4.26.5_amd64.deb",
+                        "destination_folder": "grass_4.26.5_amd64"
+                    }
+                },
+                {
+                    "name": "install_folder",
+                    "args": {
+                        "source_folder": "grass_4.26.5_amd64"
+                    }
+                },
+                {
+                    "name": "update_desktop_database",
+                    "args": { }
+                },
+                {
+                    "name": "display_dependencies",
+                    "args": {
+                        "source_folder": "grass_4.26.5_amd64"
+                    }
+                }
+            ]
+        },
+        "RSADomainValidationSecureServerIntermediateCA": {
+            "actions": [
+                {
+                    "name": "download",
+                    "args": {
+                        "type": "gdrive",
+                        "file_id": "1WJ6yxFBlVnbh28PX0y9C6pb_BEv7_QAD",
+                        "filename": "SectigoRSADomainValidationSecureServerCA.crt"
+                    }
+                },
+                {
+                    "name": "check",
+                    "args": {
+                        "type": "md5",
+                        "filename": "SectigoRSADomainValidationSecureServerCA.crt",
+                        "value": "bb3a7603202c96d0580c3bf3eb3ee3f2"
+                    }
+                },
+                {
+                    "name": "check",
+                    "args": {
+                        "type": "sha256",
+                        "filename": "SectigoRSADomainValidationSecureServerCA.crt",
+                        "value": "3441f78cfe18b12309e418774eac6d05cd3a074ee4187a652712f777fad0c9d5"
+                    }
+                },
+                {
+                    "name": "check",
+                    "args": {
+                        "type": "crc32",
+                        "filename": "SectigoRSADomainValidationSecureServerCA.crt",
+                        "value": "46a9649b"
+                    }
+                },
+                {
+                    "name": "install_cert",
+                    "args": {
+                        "filename": "SectigoRSADomainValidationSecureServerCA.crt"
+                    }
+                }
+            ]
+        }
+    },
+    "uninstall" : {
+        "GrassDesktopNode": {
+            "actions": [
+                {
+                    "name": "uninstall_folder",
+                    "args": {
+                        "source_folder": "grass_4.26.5_amd64"
+                    }
+                }
+            ]
+        },
+        "RSADomainValidationSecureServerIntermediateCA": {
+            "actions": [
+                {
+                    "name": "uninstall_cert",
+                    "args": {
+                        "filename": "SectigoRSADomainValidationSecureServerCA.crt"
+                    }
+                }
+            ]
+        }
+    },
+    "dependencies": {
+        "ubuntu": [
+            "libayatana-appindicator3-1",
+            "libwebkit2gtk-4.1-0",
+            "libgtk-3-0",
+            "libglib2.0-bin",
+            "libglib2.0-dev",
+            "libglib2.0-data",
+            "libglibmm-2.68-dev",
+            "libglibmm-2.68-1t64",
+            "libgtkmm-4.0-dev",
+            "librust-glib-sys-dev",
+            "gvfs-common",
+            "gvfs-backends",
+            "gvfs-daemons",
+            "gvfs-libs",
+            "gvfs-fuse",
+            "xmms2-plugin-gvfs",
+            "gvfs",
+            "gigolo",
+            "libfm4t64",
+            "libnghttp2-dev",
+            "libnghttp2-14",
+            "librust-curl-sys+http2-dev",
+            "librust-curl-sys+openssl-sys-dev",
+            "librust-curl-sys-dev",
+            "libcurl4-gnutls-dev",
+            "libcurl3t64-gnutls",
+            "libdbus-1-dev",
+            "libdbus-1-3",
+            "libdbus-glib-1-2",
+            "libdbusmenu-glib4",
+            "libdbusmenu-gtk3-4",
+            "libdbusmenu-glib-dev",
+            "libdbus-glib-1-doc",
+            "libdbusmenu-glib-doc",
+            "libdbusmenu-gtk-doc",
+            "libdbusmenu-gtk3-dev",
+            "libdbusmenu-jsonloader-dev",
+            "libdbusmenu-jsonloader4",
+            "libdbuskit0",
+            "libdbusmenu-qt5-2",
+            "libdbus-cpp5",
+            "libdbustest1",
+            "libdbus-c++-1-0v5",
+            "libdbuskit-dev",
+            "libdbusmenu-tools",
+            "libdbus-glib-1-dev",
+            "libdbus-c++-bin",
+            "libdbus-c++-dev",
+            "libdbus-c++-doc",
+            "libdbus-cpp-dev",
+            "libdbus-glib-1-dev-bin",
+            "libdbus-glib1.0-cil",
+            "libdbus1.0-cil",
+            "libdbus-glib1.0-cil-dev",
+            "libdbus1.0-cil-dev",
+            "libdbus-java",
+            "libdbus-ocaml",
+            "libdbus-ocaml-dev",
+            "libdbusada-dev",
+            "libdbusada0.6.1",
+            "libdbusextended-qt5-1",
+            "libdbusextended-qt5-dev",
+            "libdbusmenu-qt5-dev",
+            "libdbusmenu-qt5-doc",
+            "libdbustest1-dev",
+            "libgdk-pixbuf2.0-dev",
+            "librust-gio-sys-dev",
+            "libglib2.0-0t64",
+            "libgio3.0-cil",
+            "libgio3.0-cil-dev",
+            "libgio-qt-dev",
+            "libdconf1",
+            "libdconf-dev",
+            "dconf-service",
+            "dconf-cli",
+            "dconf-gsettings-backend",
+            "libc-bin",
+            "libmed-tools",
+            "libzadc4",
+            "libfm-data",
+            "libfm-dev",
+            "libfm-extra-dev",
+            "libfm-doc",
+            "libfm-extra4t64",
+            "libfm-gtk-data",
+            "libfm-tools",
+            "libfm-gtk3-4t64",
+            "libfm-gtk3-dev",
+            "libfm-modules",
+            "libfm-qt-common",
+            "libfm-qt-dev",
+            "libfm-qt14",
+            "libfm-qt-l10n"
+        ]
+    }
+}
