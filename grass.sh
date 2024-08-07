@@ -13,9 +13,6 @@ update_packages() {
     sudo apt update
 }
 
-# 脚本保存路径
-SCRIPT_PATH="$HOME/grass.sh"
-
 # 安装依赖项
 install_dependencies() {
     echo "安装证书..."
@@ -30,6 +27,9 @@ install_dependencies() {
     echo "安装 lsb-release..."
     sudo apt install -y lsb-release
 
+    echo "安装 nano..."
+    sudo apt install -y nano
+
     # 检查并安装 pip
     if ! command -v pip &> /dev/null; then
         echo "pip 未安装，正在安装 pip..."
@@ -40,8 +40,8 @@ install_dependencies() {
 
     # 添加 Docker 的 GPG 密钥和存储库
     echo "添加 Docker 的 GPG 密钥和存储库..."
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
     # 更新软件包索引
     echo "更新软件包索引..."
@@ -50,7 +50,7 @@ install_dependencies() {
     # 检查并安装 Docker
     if ! command -v docker &> /dev/null; then
         echo "正在安装 Docker..."
-        sudo apt-get install -y docker.io
+        sudo apt-get install -y docker-ce docker-ce-cli containerd.io
     else
         echo "Docker 已安装，跳过安装步骤。"
     fi
