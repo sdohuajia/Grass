@@ -52,21 +52,29 @@ clone_repo() {
     git clone https://github.com/sdohuajia/Grass
 }
 
-# 替换 data.txt 文件中的占位符
-replace_data_txt() {
-    echo "进入仓库目录..."
-    cd Grass
+# 检查是否在正确的目录中
+if [ ! -d "grass-mining" ]; then
+    echo "仓库目录 'grass-mining' 不存在。请确保脚本在正确的目录中运行。"
+    exit 1
+fi
 
-    # 提示用户输入用户ID
-    read -p "请输入 Grass 上的用户ID: " user_id
+# 进入仓库目录
+cd grass-mining
 
-    if [ -f "data.txt" ]; then
-        echo "用用户ID替换 data.txt 文件中的占位符..."
-        sed -i "s/REPLACE_ME/${user_id}/g" data.txt
-    else
-        echo "data.txt 文件不存在。"
-    fi
-}
+# 提示用户替换为 grass 用户的 ID
+echo "请确保 'data.txt' 文件中的用户 ID 替换为 'grass' 用户的 ID。"
+echo "在编辑完成并保存后，按任意键继续。"
+
+# 编辑 data.txt 文件
+nano data.txt
+
+# 检查用户是否退出编辑器
+if [ $? -eq 0 ]; then
+    echo "文件编辑完成，继续执行下一步。"
+else
+    echo "编辑失败或用户未保存，脚本将退出。"
+    exit 1
+fi
 
 # 构建 Docker 镜像
 build_docker_image() {
