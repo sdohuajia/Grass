@@ -131,7 +131,6 @@ if __name__ == '__main__':
 
         asyncio.run(main(args.user_id, load_proxies(args.proxy_file)))
     else:
-        print_intro()
         check_tmux()
         manage_tmux_session('GrassV2')
         user_id, proxy_file = get_user_input()
