@@ -13,6 +13,14 @@ install_dependencies() {
     
     echo "安装 Python3 和 pip..."
     sudo apt install -y python3 python3-pip
+    
+# 检查 tmux 是否安装，如果没有则安装
+    if ! command -v tmux &> /dev/null; then
+        echo "tmux 未安装，正在安装..."
+        sudo apt install -y tmux
+    else
+        echo "tmux 已安装。"
+    fi
 }
 
 # 打开 proxy.txt 文件供用户编辑
